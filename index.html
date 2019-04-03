@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide In Up with Count Up Numbers Example</title>
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		/* 
+		Courtesy: abcc.com
+		https://abcc.com/en
+		https://abcc.com/en/at-mining 
+		*/
+		.slideInUp {
+			-webkit-animation-name: slideInUp;
+			animation-name: slideInUp;
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+		@-webkit-keyframes slideInUp {
+			0% {
+				-webkit-transform: translateY(100%);
+				transform: translateY(100%);
+				visibility: visible;
+			}
+			100% {
+				-webkit-transform: translateY(0);
+				transform: translateY(0);
+			}
+		}
+		@keyframes slideInUp {
+			0% {
+				-webkit-transform: translateY(100%);
+				transform: translateY(100%);
+				visibility: visible;
+			}
+			100% {
+				-webkit-transform: translateY(0);
+				transform: translateY(0);
+			}
+		} 
+
+		.rewards {
+			background-color: #160922;
+		}
+
+		.scroll-wrap .scroll-template {
+			height: inherit;
+			width: 100%;
+		}
+
+		.scroll-wrap {
+			-ms-flex-align: end;
+			-webkit-box-align: end;
+			align-items: flex-end;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			height: 243px;
+			overflow: hidden;
+			width: 182px;
+		}
+		.scroll-wrap .scroll-exchange-fee {
+			display: inline-block;
+			vertical-align: baseline;
+			width: 140px;
+		}
+
+		.scroll-wrap .scroll-exchange-fee li:nth-last-of-type(10) {
+			opacity: 0.1;
+		}
+
+		.scroll-wrap .scroll-exchange-fee li:nth-last-of-type(9){
+			opacity: 0.3;
+		}
+
+		.scroll-wrap .scroll-exchange-fee li:nth-last-of-type(8){
+			opacity: 0.5;
+		}
+
+		.scroll-wrap .scroll-exchange-fee li:nth-last-of-type(7){
+			opacity: 0.7;
+		}
+
+		.scroll-wrap .scroll-exchange-fee li:nth-last-of-type(6){
+			opacity: 0.9;
+		}
+
+		.scroll-wrap .scroll-exchange-fee .list-complete-item {
+			-o-transition: all .1s;
+			-webkit-transition: all .1s;
+			margin-top: 11px;
+			transition: all .1s;
+		}
+		.scroll-wrap .scroll-exchange-fee .exchange_fee {
+			font-size: 10px;
+			text-align: left;
+			width: 130px;
+			color: white;
+		}
+
+		.th-num-bold {
+			font-family: "Arial" ;
+		}
+
+
+		.ff-arial {
+			font-family: "Arial" ;
+		}
+
+		.scroll-wrap .scroll-exchange-fee .exchange_time {
+			color: hsla(0,0%,100%,.7);
+			font-size: 13px;
+		}
+
+		.f14 {
+			font-size: 14px;
+		}
+
+		.flex {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+		}
+
+		.jcsb {
+			-ms-flex-pack: justify!important;
+			-webkit-box-pack: justify!important;
+			justify-content: space-between!important;
+		}
+
+		.aic {
+			-ms-flex-align: center!important;
+			-webkit-box-align: center!important;
+			align-items: center!important;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.pull-left {
+			float: left!important;
+		}
+
+		.rewards-wrap {
+			height: 100%;
+		}
+
+		.at-equity-wrap .rewards .calculate_container {
+			-webkit-box-shadow: rgba(0,0,0,.03) 0 5px 10px 0;
+			background: url(https://s.abcc.com/portal/static/img/home-bg-pc.c9207cd.png);
+			background-repeat: no-repeat;
+			background-size: 1440px 100%;
+			box-shadow: 0 5px 10px 0 rgba(0,0,0,.03);
+			margin: 0 auto;
+			max-width: 1200px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.rewards-pc-wrap .current-profit .point {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .current-profit .integer {
+			color: #fff;
+			font-size: 45px;
+		}
+
+		.rewards-pc-wrap .current-profit .decimal {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .current-profit .unit {
+			color: #fff;
+			font-size: 24px;
+			margin-right: 5px;
+			margin-top: 18px;
+		}
+
+		.rewards-pc-wrap .yesterday-profit .point {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .yesterday-profit .integer {
+			color: #fff;
+			font-size: 45px;
+		}
+
+		.rewards-pc-wrap .yesterday-profit .decimal {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .yesterday-profit .unit {
+			color: #fff;
+			font-size: 24px;
+			margin-right: 5px;
+			margin-top: 18px;
+		}
+
+		.rewards-pc-wrap .profit-rate-100 .point {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .profit-rate-100 .integer {
+			color: #fff;
+			font-size: 45px;
+		}
+
+		.rewards-pc-wrap .profit-rate-100 .decimal {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .profit-rate-100 .unit {
+			color: #fff;
+			font-size: 24px;
+			margin-right: 5px;
+			margin-top: 18px;
+		}
+
+		.rewards-pc-wrap .total-profit .point {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .total-profit .integer {
+			color: #fff;
+			font-size: 45px;
+		}
+
+		.rewards-pc-wrap .total-profit .decimal {
+			color: #fff;
+			font-size: 25px;
+		}
+
+		.rewards-pc-wrap .total-profit .unit {
+			color: #fff;
+			font-size: 24px;
+			margin-right: 5px;
+			margin-top: 18px;
+		}
+
+		.rewards-pc-wrap {
+			height: 400px;
+			margin-left: 129px;
+			padding-top: 100px;
+			width: 630px;
+		}
+
+		.itm-rv {
+			-ms-flex: 1;
+			-webkit-box-flex: 1;
+			flex: 1;
+			font-family: "Arial";
+		}
+
+		.fb {
+			font-weight: 700;
+		}
+
+		.main-p {
+			color: hsla(0,0%,100%,.7);
+			font-size: 13px;
+			margin-bottom: 8px;
+			margin-top: 10px;
+		}
+
+		.sub-p {
+			color: hsla(0,0%,100%,.5);
+			font-size: 12px;
+			margin-top: 12px;
+		}
+
+		.fb-r {
+			font-weight: 300;
+		}
+
+		.price-btc {
+			color: hsla(0,0%,100%,.5);
+			font-size: 13px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="at-equity-wrap">
+		<div  class="rewards" >
+			<div  class="calculate_container">
+				<div  class="rewards-wrap">
+					<div class="flex jcc aic">
+						<div  class="scroll-wrap ff-arial">
+							<div  class="scroll-template"></div>
+							<ul  class="scroll-exchange-fee" id="itms_slideUp">
+								<!-- 
+								<li  class="list-complete-item flex jcsb" style="">
+								<div  class="exchange_fee th-num-bold"><span  class="f10">$</span> <span  class="f14">0</span> <span  class="f12">.0116</span></div>
+								<div  class="exchange_time f14">11:26:22</div>
+								</li>
+								-->
+							</ul>
+						</div>
+						<div  class="rewards-pc-wrap slideInUp" id="nuBlock">
+							<div  class="flex jcsb aic">
+								<div  class="itm-rv" style="margin-right: 60px;">
+									<div  class="current-profit th-num-bold fb"><span  class="unit pull-left">$</span> <span class="integer" id="cr_prft_int" >0</span> <span  class="point">.</span> <span class="decimal" id="cr_prft_dcml" >00</span></div>
+									<p  class="main-p">Platform Rewards to Be Distributed Today</p>
+									<p  class="sub-p fb-r">Total circulating KAT eligible for rewards:100,000,000</p>
+								</div>
+								<div  class="itm-rv">
+									<div  class="profit-rate-100 th-num-bold"><span  class="unit pull-left">$</span> <span  class="integer" id="dly_prft_int" >0</span> <span  class="point">.</span><span  class="decimal" id="dly_prft_dcml" >00</span></div>
+									<p  class="main-p">Daily Rewards of 1000 KAT</p>
+									<div  class="profit-rate sub-p fb-r"><span >Daily KAT Rewards Rate</span> <span  class="integer">0</span> <span  class="decimal">.00</span> <span  class="unit">%</span></div>
+								</div>
+							</div>
+							<div  class="flex jcsb aic" style="margin-top: 40px;">
+								<div  class="itm-rv" style="margin-right: 60px;">
+									<div  class="yesterday-profit th-num-bold fb'"><span  class="unit pull-left">$</span> <span  class="integer" id="ytd_prft_int" >0</span> <span  class="point">.</span><span  class="decimal" id="ytd_prft_dcml" >00</span></div>
+									<div  class="price-btc fb-r">/ 0.00000000 BTC</div>
+									<p  class="main-p fb-r">Platform Rewards Distributed Yesterday</p>
+								</div>
+								<div  class="itm-rv">
+									<div  class="total-profit th-num-bold fb'"><span  class="unit pull-left">$</span> <span  class="integer" id="ttl_prft_int" >0</span> <span  class="point">.</span><span  class="decimal" id="ttl_prft_dcml" >00</span></div>
+									<div  class="price-btc fb-r">/ 0.00000000 BTC</div>
+									<p  class="main-p fb-r">Cumulative Platform Rewards Distributed</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="slideInUp" id="slide_0" style="display: none;"><span>0</span></p> 
+</body>
+<script type="text/javascript">
+
+	$(document).on('ready', function(){
+		var cars = ["Saab", "Volvo", "BMW"];
+		for(index=0; index < cars.length; index++){
+			next = index + 1;
+			$( "#slide_" + index ).append( "<p class='slideInUp' id='slide_" + next + "'><span>"+ cars[index] +"</span></p>" );
+		}
+
+		animate_sUp();
+		setTimeout(function(){ 
+			cr_countUp();
+			dly_countUp();
+			ytd_countUp();
+			ttl_countUp();
+		}, 2000);
+
+	});
+
+	unit = "$";
+
+	var cr_data, dly_data, ytd_data, ttl_data;
+	cr_data = dly_data = ytd_data = ttl_data = ["670.0000682", "670.002", "660.000068", "660.002", "650.000000063", "650.01", "640.00000006", "640.01", "630.0000000602", "630.01", "620.0000000622", "620.01", "610.00000016", "610.002", "600.00000015998", "600.002", "590.00000094", "590.002", "580.0000009", "580.002", "760.0000682", "760.002", "660.000068", "660.002", "560.000000063", "560.01", "460.00000006", "460.01", "360.0000000602", "360.01", "260.0000000622", "260.01", "160.00000016", "160.002", "060.00000015998", "060.002", "950.00000094", "950.002", "850.0000009", "850.002"];
+
+	var rv_data = [{"price": "0.0001", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0116", "time": "11:26:22"}, {"price": "0.0009", "time": "11:26:22"}];
+
+	start = 0;
+	stop = rv_data.length - 1;
+	var rand_nu = 2000;
+	function animate_sUp(){
+		setTimeout(function(){
+			$( "#itms_slideUp" ).append('<li class="list-complete-item flex jcsb slideInUp" id="slide_'+start+'" style=""><div class="exchange_fee th-num-bold"><span  class="f10">' + unit + '</span> <span  class="f14">'+ rv_data[start].price.split(".")[0]
+				+'</span> <span class="f12">.'+ rv_data[start].price.split(".")[1]
+				+'</span></div><div class="exchange_time f14">'+ rv_data[start].time
+				+'</div></li>');
+			rand_nu = Math.floor((Math.random() * 2000) + 500);
+			if(start < stop){
+				start += 1;
+				animate_sUp();
+			}
+		}, rand_nu);
+	}
+
+	cr_start = 0;
+	cr_stop = cr_data.length - 1;
+	cr_nu = 20;
+
+	function cr_countUp(){
+		setTimeout(function(){
+			$("#cr_prft_int").text(cr_data[cr_start].split(".")[0]);
+			$("#cr_prft_dcml").text(cr_data[cr_start].split(".")[1]);
+			if(cr_start < cr_stop){
+				cr_start += 1;
+				cr_countUp();
+			}
+		}, cr_nu);
+	}
+
+	dly_start = 0;
+	dly_stop = dly_data.length - 1;
+	dly_nu = 20;
+
+	function dly_countUp(){
+		setTimeout(function(){
+			$("#dly_prft_int").text(dly_data[dly_start].split(".")[0]);
+			$("#dly_prft_dcml").text(dly_data[dly_start].split(".")[1]);
+			if(dly_start < dly_stop){
+				dly_start += 1;
+				dly_countUp();
+			}
+		}, dly_nu);
+	}
+
+	ytd_start = 0;
+	ytd_stop = ytd_data.length - 1;
+	ytd_nu = 20;
+
+	function ytd_countUp(){
+		setTimeout(function(){
+			$("#ytd_prft_int").text(ytd_data[ytd_start].split(".")[0]);
+			$("#ytd_prft_dcml").text(ytd_data[ytd_start].split(".")[1]);
+			if(ytd_start < ytd_stop){
+				ytd_start += 1;
+				ytd_countUp();
+			}
+		}, ytd_nu);
+	}
+
+
+	ttl_start = 0;
+	ttl_stop = ttl_data.length - 1;
+	ttl_nu = 20;
+
+	function ttl_countUp(){
+		setTimeout(function(){
+			$("#ttl_prft_int").text(ttl_data[ttl_start].split(".")[0]);
+			$("#ttl_prft_dcml").text(ttl_data[ttl_start].split(".")[1]);
+			if(ttl_start < ttl_stop){
+				ttl_start += 1;
+				ttl_countUp();
+			}
+		}, ttl_nu);
+
+	}
+</script>
+</html>
